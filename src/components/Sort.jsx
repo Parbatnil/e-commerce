@@ -1,7 +1,7 @@
 import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CgMenuGridR } from "react-icons/cg";
-import { useFilterContext } from "./Context/FilterContext";
+import { useFilterContext } from "./Context/filterContext";
 const Sort = () => {
   const { box_view, setBoxView, setListView, filter_products, sorting } =
     useFilterContext();
