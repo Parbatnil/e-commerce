@@ -1,7 +1,7 @@
 import React from "react";
 import BoxView from "./components/BoxView";
 import ListView from "./components/ListView";
-import { useFilterContext } from "./components/Context/FilterContext.jsx";
+import { useFilterContext } from "./components/Context/filterContext.jsx";
 
 const ProductList = () => {
   useFilterContext;
