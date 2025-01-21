@@ -5,15 +5,21 @@ import ProductList from "./ProductList";
 
 const Products = () => {
   return (
-    <div className="flex mx-44 space-x-4 my-4">
-      <div className="bg-red-700 min-h-screen w-[20%] rounded-md">
+    <div className="flex flex-col md:flex-row mx-4 md:mx-8 lg:mx-16 xl:mx-20 space-y-4 md:space-y-0 md:space-x-4 my-4">
+      {/* Filter Section */}
+      <div className="bg-red-700 min-h-screen w-full md:w-[25%] rounded-md p-4">
         <FilterSection />
       </div>
-      <div className="flex flex-col min h-screen w-[80%] rounded-md space-y-4">
-        <div className="h-[13%] bg-green-500 rounded-md">
+
+      {/* Main Content Section */}
+      <div className="flex flex-col w-full  space-y-4">
+        {/* Sort Section */}
+        <div className="bg-violet-200 p-4 rounded-md">
           <Sort />
         </div>
-        <div className="h-[87%] bg-orange-600 rounded-md">
+
+        {/* Product List Section */}
+        <div className="bg-violet-200 p-4 rounded-md">
           <ProductList />
         </div>
       </div>

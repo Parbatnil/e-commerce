@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex bg-violet-100 justify-between items-center px-4 mx-2">
+    <div className="flex bg-violet-100 justify-between items-center px-6 ">
       {/* Logo */}
       <NavLink to="/">
         <img src={logo} alt="E-Commerce" className="h-16" />
