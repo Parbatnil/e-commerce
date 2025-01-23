@@ -9,6 +9,11 @@ const initialState = {
   all_products: [],
   box_view: true,
   sorting_value: "lowest",
+  filters: {
+    text: "",
+    category: "all",
+    company: "all",
+  },
 };
 
 const FilterContextProvider = ({ children }) => {
@@ -23,13 +28,23 @@ const FilterContextProvider = ({ children }) => {
   const setListView = () => {
     return dispatch({ type: "SET_LIST_VIEW" });
   };
-  const sorting = () => {
-    return dispatch({ type: "GET_SORT_VALUE" });
+  const sorting = (event) => {
+    let userValue = event.target.value;
+    return dispatch({ type: "GET_SORT_VALUE", payload: userValue });
+  };
+
+  const updateFilterValue = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    console.log(name, value);
+
+    return dispatch({ type: "UPDATE_FILTER_VALUE", payload: { name, value } });
   };
 
   useEffect(() => {
-    return dispatch({ type: "SORTING_PRODUCTS", payload: products });
-  }, [state.sorting_value]);
+    dispatch({ type: "FILTER_PRODUCTS" });
+    dispatch({ type: "SORTING_PRODUCTS" });
+  }, [state.sorting_value, state.filters]);
 
   useEffect(() => {
     dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
@@ -37,7 +52,7 @@ const FilterContextProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setBoxView, setListView, sorting }}
+      value={{ ...state, setBoxView, setListView, sorting, updateFilterValue }}
     >
       {children}
     </FilterContext.Provider>

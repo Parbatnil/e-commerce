@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <div className="flex flex-col md:flex-row mx-4 md:mx-8 lg:mx-16 xl:mx-20 space-y-4 md:space-y-0 md:space-x-4 my-4">
       {/* Filter Section */}
-      <div className="bg-red-700 min-h-screen w-full md:w-[25%] rounded-md p-4">
+      <div className="bg-violet-200  md:min-h-screen w-full md:w-[25%] rounded-md p-4">
         <FilterSection />
       </div>
 
