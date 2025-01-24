@@ -1,6 +1,7 @@
 import React from "react";
 import { useFilterContext } from "./Context/filterContext";
-
+import { FaCheck } from "react-icons/fa";
+import CartAmountToggle from "./CartAmountToggle";
 const FilterSection = () => {
   const {
     updateFilterValue,
@@ -75,6 +76,35 @@ const FilterSection = () => {
               );
             })}
           </select>
+        </div>
+        <div>
+          <h3>Colors</h3>
+          <div className="flex flex-wrap space-x-2">
+            {colorsData.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  typeof="button"
+                  name="colors"
+                  onClick={updateFilterValue}
+                  value={item}
+                  className="flex items-center justify-center transition-transform transform hover:scale-110 cursor-pointer"
+                  style={{
+                    backgroundColor: item,
+                    border:
+                      colors === item ? "2px solid #000" : "1px solid #ccc",
+                    width: "30px",
+                    height: "30px",
+                    borderRadius: "50%",
+                  }}
+                >
+                  {colors === item ? (
+                    <FaCheck className="text-white text-sm" />
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

@@ -59,7 +59,7 @@ const filterReducer = (state, action) => {
     case "FILTER_PRODUCTS":
       let { all_products } = state;
       let newFilterProducts = [...all_products];
-      let { text, category, company } = state.filters;
+      let { text, category, company, colors } = state.filters;
 
       if (text) {
         newFilterProducts = newFilterProducts.filter((product) => {
@@ -76,6 +76,12 @@ const filterReducer = (state, action) => {
       if (company !== "all") {
         newFilterProducts = newFilterProducts.filter((product) => {
           return product.company === company;
+        });
+      }
+
+      if (colors !== "all") {
+        newFilterProducts = newFilterProducts.filter((product) => {
+          return product.colors.includes(colors);
         });
       }
 

@@ -31,7 +31,9 @@ const Sort = () => {
       </div>
       <div>
         <p className="text-xs md:text-lg">
-          {filter_products.length} total Products
+          {filter_products.length === 0
+            ? "No Products"
+            : filter_products.length + "total Products"}
         </p>
       </div>
       <div>
@@ -45,8 +47,8 @@ const Sort = () => {
           >
             <option value="lowest">Price (lowest)</option>
             <option value="highest">Price (highest)</option>
-            <option value="a-z">Price (A-Z)</option>
-            <option value="z-a">Price (Z-A)</option>
+            <option value="a-z">Sort by A-Z</option>
+            <option value="z-a">Sort by Z-A</option>
           </select>
         </form>
       </div>
