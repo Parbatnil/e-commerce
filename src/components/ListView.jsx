@@ -25,7 +25,7 @@ const ListView = ({ products }) => {
               <div className="flex justify-between items-center">
                 <FormatPrice price={price} />
                 <NavLink
-                  to={`/product/${id}`}
+                  to={`/singleproduct/${id}`}
                   className="text-blue-500 hover:underline"
                 >
                   View Details
