@@ -45,7 +45,10 @@ const AddToCart = ({ singleProduct }) => {
       </div>
       <div>
         <CartAmountToggle
+          id={id}
+          color={color}
           amount={amount}
+          singleProduct={singleProduct}
           setDecrease={setDecrease}
           setIncrease={setIncrease}
         />
