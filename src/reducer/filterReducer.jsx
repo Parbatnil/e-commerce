@@ -1,10 +1,16 @@
 const filterReducer = (state, action) => {
   switch (action.type) {
     case "LOAD_FILTER_PRODUCTS":
+      let priceArr = action.payload.map((product) => product.price);
+      console.log("priceArr", priceArr);
+      let maxPrice = Math.max(...priceArr);
+      console.log("maxPrice", maxPrice);
+
       return {
         ...state,
         filter_products: [...action.payload],
         all_products: action.payload,
+        filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice },
       };
     case "SET_BOX_VIEW":
       return {
@@ -59,7 +65,7 @@ const filterReducer = (state, action) => {
     case "FILTER_PRODUCTS":
       let { all_products } = state;
       let newFilterProducts = [...all_products];
-      let { text, category, company, colors } = state.filters;
+      let { text, category, company, colors, price } = state.filters;
 
       if (text) {
         newFilterProducts = newFilterProducts.filter((product) => {
@@ -84,10 +90,34 @@ const filterReducer = (state, action) => {
           return product.colors.includes(colors);
         });
       }
+      if (price === 0) {
+        newFilterProducts = newFilterProducts.filter((product) => {
+          return product.price == price;
+        });
+      } else {
+        {
+          newFilterProducts = newFilterProducts.filter((product) => {
+            return product.price <= price;
+          });
+        }
+      }
 
       return {
         ...state,
         filter_products: newFilterProducts,
+      };
+    case "CLEAR_FILTERS":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          category: "all",
+          company: "all",
+          colors: "all",
+          price: state.filters.maxPrice,
+          maxPrice: state.filters.maxPrice,
+        },
       };
     default:
       return state;

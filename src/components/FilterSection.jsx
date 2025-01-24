@@ -2,11 +2,14 @@ import React from "react";
 import { useFilterContext } from "./Context/filterContext";
 import { FaCheck } from "react-icons/fa";
 import CartAmountToggle from "./CartAmountToggle";
+import FormatPrice from "./Helper/FormatPrice";
+import { FcClearFilters } from "react-icons/fc";
 const FilterSection = () => {
   const {
     updateFilterValue,
     all_products,
-    filters: { text, category, company, colors },
+    clearFilters,
+    filters: { text, category, company, colors, price, maxPrice, minPrice },
   } = useFilterContext();
 
   // TO GET UNIQUE DATA OF EACH FIELD
@@ -81,6 +84,20 @@ const FilterSection = () => {
           <h3>Colors</h3>
           <div className="flex flex-wrap space-x-2">
             {colorsData.map((item, index) => {
+              if (item === "all") {
+                return (
+                  <button
+                    key={index}
+                    typeof="button"
+                    name="colors"
+                    onClick={updateFilterValue}
+                    value={item}
+                    className="p-2 text-xs md:text-md rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  >
+                    {item}
+                  </button>
+                );
+              }
               return (
                 <button
                   key={index}
@@ -105,6 +122,32 @@ const FilterSection = () => {
               );
             })}
           </div>
+        </div>
+        <div>
+          <h3>Price</h3>
+          <div>
+            <p>
+              <FormatPrice price={price} />
+            </p>
+            <input
+              type="range"
+              value={price}
+              onChange={updateFilterValue}
+              name="price"
+              id=""
+              min={minPrice}
+              max={maxPrice}
+              step={100}
+            />
+          </div>
+        </div>
+        <div>
+          <button
+            className="bg-pink-500 text-white px-4 py-3 rounded-sm font-bold hover:bg-violet-400"
+            onClick={clearFilters}
+          >
+            Clear Filter{" "}
+          </button>
         </div>
       </div>
     </div>
