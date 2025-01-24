@@ -5,19 +5,23 @@ const FilterSection = () => {
   const {
     updateFilterValue,
     all_products,
-    filters: { text, category, company },
+    filters: { text, category, company, colors },
   } = useFilterContext();
 
   // TO GET UNIQUE DATA OF EACH FIELD
   const getUniquedata = (items, value) => {
     let newVal = items.map((item) => item[value]);
-
+    if (value === "colors") {
+      newVal = newVal.flat();
+    }
     return (newVal = ["all", ...new Set(newVal)]);
   };
 
   //unique data
   const categoryOnlyData = getUniquedata(all_products, "category");
   const companyOnlyData = getUniquedata(all_products, "company");
+  const colorsData = getUniquedata(all_products, "colors");
+  console.log("colorsData", colorsData);
   return (
     <div>
       <div>
