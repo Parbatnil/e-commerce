@@ -2,6 +2,7 @@ import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "./Context/cart_context";
 const CartAmountToggle = ({
   id,
   color,
@@ -10,6 +11,8 @@ const CartAmountToggle = ({
   setIncrease,
   singleProduct,
 }) => {
+  const { cartadd } = useCartContext();
+
   return (
     <div>
       <div className=" flex space-x-9 py-3">
@@ -22,16 +25,6 @@ const CartAmountToggle = ({
           {" "}
           <FaPlus />
         </button>
-      </div>
-      <div>
-        <NavLink to="/cart">
-          <button
-            className="bg-violet-500 text-white px-4 py-3 rounded-sm font-bold hover:bg-violet-400"
-            onClick={() => cartadd(id, color, amount, singleProduct)}
-          >
-            Add to cart
-          </button>
-        </NavLink>
       </div>
     </div>
   );

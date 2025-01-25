@@ -5,7 +5,7 @@ import Product from "./Product";
 
 const FeatureProducts = () => {
   const { isLoading, featureProducts } = useProductContext();
-  console.log(featureProducts);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center">

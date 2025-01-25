@@ -25,7 +25,7 @@ const FilterSection = () => {
   const categoryOnlyData = getUniquedata(all_products, "category");
   const companyOnlyData = getUniquedata(all_products, "company");
   const colorsData = getUniquedata(all_products, "colors");
-  console.log("colorsData", colorsData);
+
   return (
     <div>
       <div>
