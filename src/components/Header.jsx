@@ -4,8 +4,10 @@ import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
+import { useCartContext } from "./Context/cart_context";
 
 const Header = () => {
+  const { total_items } = useCartContext();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -65,7 +67,7 @@ const Header = () => {
           <NavLink to="/cart" className="flex relative">
             <FiShoppingCart className="text-violet-800 text-3xl" />
             <span className="absolute inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-violet-800 border-2 border-white rounded-full -top-1 -right-1">
-              100
+              {total_items}
             </span>
           </NavLink>
         </ul>
@@ -135,7 +137,7 @@ const Header = () => {
             >
               <FiShoppingCart className="text-violet-800 text-3xl" />
               <span className="absolute inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-violet-800 border-2 border-white rounded-full -top-1 -right-1">
-                100
+                {total_items}
               </span>
             </NavLink>
           </ul>
