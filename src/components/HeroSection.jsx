@@ -1,5 +1,6 @@
 import React from "react";
 import hero from "../../public/Images/heroecommerce.jpg";
+import { NavLink } from "react-router-dom";
 const HeroSection = ({ text }) => {
   return (
     <div className="  mx-4 xl:mx-44 my-28 flex flex-col-reverse gap-9  md:flex-row lg:mx-20 justify-center items-center">
@@ -11,9 +12,11 @@ const HeroSection = ({ text }) => {
           products across categories, enabling customers to browse, search, add
           to cart, checkout, and enjoy seamless delivery.
         </p>
-        <button className="bg-violet-500 text-white px-4 py-3 rounded-sm font-bold hover:bg-violet-400">
-          SHOP NOW
-        </button>
+        <NavLink to="/products">
+          <button className="bg-violet-500 text-white px-4 py-3 rounded-sm font-bold hover:bg-violet-400">
+            SHOP NOW
+          </button>
+        </NavLink>
       </div>
 
       <div className="">

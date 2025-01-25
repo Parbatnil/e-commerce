@@ -91,34 +91,22 @@ const cart_reducer = (state, action) => {
     };
   }
 
-  // Handle "GET_TOTALS" action
-  if (action.type === "GET_TOTALS") {
-    let updatedTotals = state.cart.reduce(
-      (initialVal, curElem) => {
-        let { amount, price } = curElem;
-        let itemTotal = amount * price;
-        initialVal.total_items += amount;
-        initialVal.total_amount += itemTotal;
-        return initialVal;
+  // Handle "CART_ITEM_PRICE_TOTAL" action
+  if (action.type === "CART_ITEM_PRICE_TOTAL") {
+    let { total_items, total_amount } = state.cart.reduce(
+      (accum, curElem) => {
+        let { price, amount } = curElem;
+        let itemTotal = price * amount;
+        accum.total_items += amount;
+        accum.total_amount += itemTotal;
+        return accum;
       },
-      { total_items: 0, total_amount: 0 } // Correct initial value as an object
+      { total_items: 0, total_amount: 0 }
     );
     return {
       ...state,
-      total_items: updatedTotals.total_items,
-      total_amount: updatedTotals.total_amount,
-    };
-  }
-  if (action.type === "CART_TOTAL_PRICE") {
-    let total_price = state.cart.reduce((initialVal, curElem) => {
-      let { price, amount } = curElem;
-      let itemTotal = price * amount;
-      initialVal += itemTotal;
-      return initialVal;
-    }, 0);
-    return {
-      ...state,
-      total_amount: total_price,
+      total_items,
+      total_amount,
     };
   }
 
