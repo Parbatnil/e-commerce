@@ -42,7 +42,7 @@ const Cart = () => {
             className="flex justify-between items-center  py-4"
           >
             {/* Item */}
-            <div className="flex flex-col md:flex-row space-x-4 w-1/5 items-center">
+            <div className="flex flex-col md:flex-row space-x-4 w-1/5 items-center justify-center md:justify-start">
               <img
                 src={
                   item.image ||
@@ -52,13 +52,13 @@ const Cart = () => {
                 alt={item.name}
               />
               <div className="flex flex-col">
-                <h5 className="font-semibold text-sm md:text-base">
+                <h5 className="font-semibold  text-xs md:text-base">
                   {item.name}
                 </h5>
-                <p className="text-xs md:text-sm">
-                  Color:{" "}
+                <p className="text-xs md:text-sm mx-1">
+                  Color:
                   <span
-                    className="inline-block w-8 h-8 md:w-4 md:h-4 rounded-full border"
+                    className="inline-block w-2 h-2 md:w-4 md:h-4 rounded-full border"
                     style={{ backgroundColor: item.color || "#426cf5" }}
                   ></span>
                 </p>
@@ -71,7 +71,7 @@ const Cart = () => {
             </div>
 
             {/* Quantity */}
-            <div className="w-1/5 md:text-left text-center text-sm md:text-base">
+            <div className="w-1/5 md:text-left text-center text-xs md:text-base">
               <CartAmountToggle
                 id={item.id}
                 color={item.color}
